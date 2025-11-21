@@ -6,26 +6,12 @@
     <title>My Telegram Mini App</title>
     <!-- Optional: Include your CSS file here -->
     <!-- <link rel="stylesheet" href="styles.css"> -->
+     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <h1 id="beg">BEGIN CANVAS</h1>
-    <canvas></canvas>
-    <h1 id="end">END CANVAS</h1>
-
     <!-- Essential: Include the Telegram Webview SDK -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-        // Initialize the Telegram Web App
-        Telegram.WebApp.ready();
-
-        // Example: Display user data (if available)
-        if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
-            document.body.innerHTML += `<p>Hello, ${Telegram.WebApp.initDataUnsafe.user.first_name}!</p>`;
-        }
-
-        // Example: Close the Mini App programmatically
-        // Telegram.WebApp.close();
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    
     <script src="main.js"></script>
     <!-- Optional: Include your JavaScript file here -->
     <!-- <script src="script.js"></script> -->
