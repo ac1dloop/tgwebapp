@@ -13,7 +13,7 @@ textSize(10);
 let outputText = "Failed to get data";
 
 if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
-    outputText = Telegram.WebApp.initDataUnsafe
+    outputText = JSON.stringify(Telegram.WebApp.initDataUnsafe);
 }
 
 text(outputText, 50, 50)
@@ -26,7 +26,7 @@ function setup() {
 function draw() {
 background(100);
 
-printWebAppInfo()
+printWebAppInfo();
 }
 
 // Example: Close the Mini App programmatically
