@@ -5,11 +5,14 @@ const txtSize = 10;
 
 let mainImage = null;
 
-document.addEventListener("DOMContentLoaded", () => {
-    Telegram.WebApp.ready();
+// document.addEventListener("DOMContentLoaded", () => {
+//     Telegram.WebApp.ready();
 
-    Telegram.WebApp.expand();
-});
+//     Telegram.WebApp.expand();
+// });
+
+Telegram.WebApp.ready();
+Telegram.WebApp.expand();
 
 // Print Web App User info
 function printWebAppInfo(){
