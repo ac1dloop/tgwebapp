@@ -1,20 +1,31 @@
-// Initialize the Telegram Web App
-Telegram.WebApp.ready()
-// Example: Display user data (if available)
+const canvasWidth = 500;
+const canvasHeight = 500;
+
+document.addEventListener("DOMContentLoaded", () => {
+    Telegram.WebApp.ready();
+
+    Telegram.WebApp.expand();
+});
+
+function printWebAppInfo(){
+textSize(10);
+
+let outputText = "Failed to get data";
+
 if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
-    document.body.innerHTML += `<p>Hello, ${Telegram.WebApp.initDataUnsafe.user.first_name}!</p>`;
+    outputText = Telegram.WebApp.initDataUnsafe
 }
-// Example: Close the Mini App programmatically
-// Telegram.WebApp.close();
+
+text(outputText, 50, 50)
+}
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(canvasWidth, canvasHeight);
 }
+
 function draw() {
-  background(220);
+background(100);
 }
 
-console.log("Hello")
-
-elem = document.getElementById("beg")
-elem.innerHTML = "Script is running";
+// Example: Close the Mini App programmatically
+// Telegram.WebApp.close();
