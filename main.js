@@ -3,7 +3,7 @@ const canvasHeight = 500;
 const padding = 20;
 const txtSize = 10;
 
-const dbg = `{"query_id": "AAFjgdsaf23jnadslk", "user": { "id": 194728483, "is_bot": false, "first_name": "Nick", "last_name": null, "username": "nickk", "language_code": "en", "is_premium": true, "allows_write_to_pm": true }, "receiver": { "id": 194728483, "is_bot": false, "first_name": "Nick", "last_name": null, "username": "nickk", "language_code": "en", "is_premium": true }, "chat": { "id": -1002123213321, "type": "supergroup", "title": "MyGroup", "username": "my_group", "photo_url": "https://t.me/i/userpic/320/group.jpg" }, "chat_type": "supergroup", "chat_instance": "-5953634227559283144", "start_param": "LEVEL5", "can_send_after": null, "auth_date": 1735032280,"hash": "7a1f9f3be31ac9ff6f93ff7b507aa8..." }`;
+let mainImage = null;
 
 document.addEventListener("DOMContentLoaded", () => {
     Telegram.WebApp.ready();
@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
     Telegram.WebApp.expand();
 });
 
+// Print Web App User info
 function printWebAppInfo(){
 textSize(txtSize);
 
-// let outputText = "Failed to get data";
-let outputText = dbg;
+let outputText = "Failed to get data";
 
 if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
     outputText = JSON.stringify(Telegram.WebApp.initDataUnsafe);
@@ -24,16 +24,33 @@ if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
 text(outputText, padding, padding, canvasWidth - padding, canvasHeight - padding);
 }
 
+function preload() {
+    if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user && Telegram.WebApp.initDataUnsafe.user.photo_url) {
+        mainImage = loadImage(Telegram.WebApp.initDataUnsafe.user.photo_url);
+    } else {
+        mainImage = loadImage("https://mdn.github.io/shared-assets/images/examples/mdn.svg");
+    }
+}
+
+function drawAvatar() {
+
+image(mainImage, 0, 0);
+
+}
+
 // Setup canvas
 function setup() {
-  createCanvas(canvasWidth, canvasHeight);
+    createCanvas(canvasWidth, canvasHeight);
+    // imageMode(CENTER);
 }
 
 // Event loop
 function draw() {
-background(220);
+    background(220);
 
-printWebAppInfo();
+    printWebAppInfo();
+
+    drawAvatar();
 }
 
 // Example: Close the Mini App programmatically
