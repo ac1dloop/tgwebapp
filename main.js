@@ -1,5 +1,7 @@
 const canvasWidth = 500;
 const canvasHeight = 500;
+const padding = 20;
+const txtSize = 10;
 
 document.addEventListener("DOMContentLoaded", () => {
     Telegram.WebApp.ready();
@@ -8,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function printWebAppInfo(){
-textSize(10);
+textSize(txtSize);
 
 let outputText = "Failed to get data";
 
@@ -16,7 +18,7 @@ if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
     outputText = JSON.stringify(Telegram.WebApp.initDataUnsafe);
 }
 
-text(outputText, 50, 50)
+text(outputText, padding, padding, canvasWidth - padding * 2);
 }
 
 function setup() {
