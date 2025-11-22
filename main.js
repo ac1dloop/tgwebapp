@@ -25,6 +25,8 @@ function setup() {
 
 function draw() {
 background(100);
+
+printWebAppInfo()
 }
 
 // Example: Close the Mini App programmatically
